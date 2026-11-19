@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Undangan Pertemuan Keluarga Besar Bani Mardjuki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0F19; --gold:#D4AF37; --gold-soft:rgba(212,175,55,.35);
+  --white:#F8F6F0; --muted:rgba(248,246,240,.7);
+  --glass:rgba(255,255,255,.05); --line:rgba(212,175,55,.28);
+  --serif:'Cinzel',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--white);font-family:var(--sans);font-size:clamp(16px,2.2vw,18px);line-height:1.7;overflow-x:hidden}
+body.locked{overflow:hidden}
+button,input,textarea{font:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* Cahaya ambient + debu emas */
+.orb{position:fixed;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0;pointer-events:none;animation:drift 18s ease-in-out infinite alternate}
+.orb.a{width:min(340px,70vw);height:min(340px,70vw);background:#1b2a5c;top:-80px;left:-80px}
+.orb.b{width:min(300px,60vw);height:min(300px,60vw);background:rgba(212,175,55,.22);bottom:-80px;right:-60px;animation-delay:-6s}
+.orb.c{width:min(240px,50vw);height:min(240px,50vw);background:#2a1f4d;top:45%;left:55%;animation-delay:-11s}
+@keyframes drift{to{transform:translate(40px,60px) scale(1.15)}}
+.dust{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.dust i{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{opacity:0;transform:translateY(0)}15%{opacity:.7}100%{opacity:0;transform:translateY(-105vh) translateX(30px)}}
+
+main{position:relative;z-index:1}
+section{padding:clamp(56px,10vw,100px) 20px;max-width:780px;margin:0 auto;text-align:center}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.04em}
+h2{font-size:clamp(1.4rem,5vw,2rem);color:var(--gold);margin-bottom:12px}
+h2+.divider{margin-top:0;margin-bottom:30px}
+p{color:var(--muted)}
+.divider{width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto;position:relative}
+.divider::after{content:"";position:absolute;left:50%;top:-3px;width:7px;height:7px;background:var(--gold);transform:translateX(-50%) rotate(45deg);box-shadow:0 0 12px var(--gold)}
+
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:22px;padding:28px 20px;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.03) inset,0 12px 40px rgba(0,0,0,.35),0 0 28px rgba(212,175,55,.06)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.show{opacity:1;transform:none}
+
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
+  padding:15px 30px;border-radius:999px;border:1px solid var(--gold);background:rgba(212,175,55,.1);
+  color:var(--gold);font-weight:600;letter-spacing:.05em;text-decoration:none;transition:background .3s,color .3s,box-shadow .3s}
+.btn:hover{background:var(--gold);color:var(--bg);box-shadow:0 0 30px var(--gold-soft)}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 3.2s infinite}
+@keyframes shine{to{left:140%}}
+.btn:disabled{opacity:.5;cursor:wait}
+.btn svg{width:18px;height:18px;fill:currentColor;flex:none}
+
+/* ===== COVER: crossfade halus tanpa garis ===== */
+#cover{position:fixed;inset:0;z-index:100;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#141c33,var(--bg) 70%);
+  transition:opacity 1.6s cubic-bezier(.4,0,.2,1) .45s,visibility 0s linear 2.1s}
+.cover-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;
+  transition:opacity .9s ease,transform 1.4s cubic-bezier(.4,0,.2,1)}
+.bismillah{font-family:'Amiri','Traditional Arabic',serif;font-size:clamp(1.7rem,7vw,2.6rem);line-height:1.6;color:var(--gold);text-shadow:0 0 28px var(--gold-soft);margin-bottom:18px;direction:rtl}
+.cover-in .hello{max-width:440px;font-size:clamp(.9rem,3.6vw,1.05rem)}
+#cover h1{font-size:clamp(1.7rem,7.5vw,3.2rem);line-height:1.2;margin:16px 0 24px;max-width:640px}
+#guestLabel{font-size:.9rem}
+#guest{font-family:var(--serif);font-size:clamp(1.1rem,4.5vw,1.4rem);margin-bottom:32px;word-break:break-word}
+#cover.opening{opacity:0;visibility:hidden;pointer-events:none}
+#cover.opening .cover-in{opacity:0;transform:translateY(-18px) scale(1.03)}
+#cover.gone{display:none}
+
+/* Hero (animasi bertahap setelah undangan dibuka) */
+#hero{min-height:94vh;min-height:94svh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.hi{opacity:0;transform:translateY(34px);transition:opacity 1.5s ease,transform 1.5s cubic-bezier(.2,.7,.2,1);transition-delay:calc(.9s + var(--i)*.3s)}
+body.opened .hi{opacity:1;transform:none}
+#hero .sub{font-family:var(--serif);color:var(--gold);letter-spacing:.22em;font-size:clamp(.72rem,3vw,.95rem)}
+#hero h1{font-size:clamp(2.6rem,13vw,5.4rem);line-height:1.1;margin-top:16px;text-shadow:0 0 40px var(--gold-soft)}
+#hero p.open{max-width:520px}
+.scroll{margin-top:34px;width:22px;height:36px;border:1px solid var(--gold-soft);border-radius:12px;position:relative}
+.scroll::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--gold);animation:wheel 1.8s infinite}
+@keyframes wheel{to{transform:translateY(12px);opacity:0}}
+
+/* Countdown */
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(6px,2vw,14px)}
+.count .glass{padding:clamp(12px,3vw,22px) 2px}
+.count b{display:block;font-family:var(--serif);font-size:clamp(1.5rem,8vw,2.8rem);color:var(--gold);font-weight:500;line-height:1.1}
+.count span{font-size:clamp(.72rem,2.8vw,.9rem);color:var(--muted)}
+#done{display:none;font-family:var(--serif);color:var(--gold);font-size:1.3rem;margin-top:20px}
+
+/* Detail */
+.date-row{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:6px}
+.date-row small{display:block;color:var(--muted);font-size:.85rem}
+.date-row strong{font-family:var(--serif);font-size:clamp(1rem,4vw,1.6rem);font-weight:500}
+.date-row div+div{border-left:1px solid var(--line)}
+@media (max-width:440px){.date-row{grid-template-columns:1fr}.date-row div+div{border-left:0;border-top:1px solid var(--line);padding-top:10px}}
+.place h3{font-size:clamp(1.2rem,5vw,1.5rem);margin-bottom:8px}
+.place p{margin-bottom:22px}
+
+
+/* Form pesan */
+form{display:grid;gap:14px;text-align:left}
+label{font-size:.9rem;color:var(--muted)}
+input,textarea{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--white);margin-top:4px;font-size:16px}
+input::placeholder,textarea::placeholder{color:rgba(248,246,240,.35)}
+textarea{min-height:100px;resize:vertical}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:6px}
+#wishes{margin-top:28px;display:grid;gap:12px;text-align:left;max-height:440px;overflow:auto;padding-right:2px}
+.wish{padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.wish.mine{border-color:var(--gold-soft)}
+.wish strong{color:var(--gold);font-family:var(--serif);font-weight:500;word-break:break-word}
+.wish p{color:var(--white);margin-top:4px;font-size:.98rem;overflow-wrap:anywhere}
+.wish-actions{display:flex;gap:8px;margin-top:12px}
+.mini{padding:6px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--gold);font-size:.85rem;cursor:pointer;transition:.3s}
+.mini:hover{background:var(--gold);color:var(--bg)}
+.mini.del{color:#e89a9a;border-color:rgba(232,154,154,.4)}
+.mini.del:hover{background:#e89a9a;color:var(--bg)}
+
+footer{position:relative;z-index:1;text-align:center;padding:60px 22px 80px;border-top:1px solid var(--line);max-width:780px;margin:0 auto}
+footer h3{color:var(--gold);font-size:clamp(1.2rem,5vw,1.5rem);margin:10px 0}
+
+.spark{position:fixed;z-index:120;width:6px;height:6px;border-radius:50%;background:var(--gold);pointer-events:none;box-shadow:0 0 10px var(--gold)}
+#music{position:fixed;right:16px;bottom:16px;z-index:90;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:rgba(11,15,25,.7);color:var(--gold);cursor:pointer;display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important;transition-delay:0s!important}.reveal,.hi{opacity:1;transform:none}main{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body class="locked">
+
+<div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+<div class="dust" id="dust"></div>
+
+<!-- ===== LAYAR PEMBUKA ===== -->
+<div id="cover">
+  <div class="cover-in">
+    <!-- BASMALAH -->
+    <div class="bismillah" lang="ar" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="hello">Atas rahmat dan ridho Allah SWT, kami mengharapkan kehadiran keluarga besar Bani Mardjuki dalam</p>
+    <h1>Pertemuan Keluarga Besar Bani Mardjuki</h1>
+    <p id="guestLabel">Kepada Yth.</p>
+    <div id="guest">Bapak/Ibu/Saudara/i</div>
+    <button class="btn" id="openBtn" type="button">Buka Undangan</button>
+  </div>
+</div>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <p class="sub hi" style="--i:0">KELUARGA BESAR BANI MARDJUKI</p>
+    <h1 class="hi" style="--i:1">Bani Mardjuki</h1>
+    <div class="divider hi" style="--i:2"></div>
+    <p class="open hi" style="--i:3">Dari satu keluarga tumbuh banyak cabang. Mari pulang sejenak, berkumpul, bersilaturahmi, dan mempererat kembali tali persaudaraan kita.</p>
+    <!-- GANTI KALIMAT PEMBUKA DI ATAS JIKA PERLU -->
+    <div class="scroll hi" style="--i:4"></div>
+  </section>
+
+  <!-- ===== HITUNG MUNDUR ===== -->
+  <section>
+    <h2 class="reveal">Menuju Hari Pertemuan</h2>
+    <div class="divider reveal"></div>
+    <div class="count reveal">
+      <div class="glass"><b id="d">00</b><span>Hari</span></div>
+      <div class="glass"><b id="h">00</b><span>Jam</span></div>
+      <div class="glass"><b id="m">00</b><span>Menit</span></div>
+      <div class="glass"><b id="s">00</b><span>Detik</span></div>
+    </div>
+    <p id="done">Alhamdulillah, acara sedang berlangsung atau telah selesai.</p>
+  </section>
+
+  <!-- ===== WAKTU ACARA ===== -->
+  <section>
+    <h2 class="reveal">Waktu Acara</h2>
+    <div class="divider reveal"></div>
+    <div class="glass reveal">
+      <!-- GANTI HARI/TANGGAL/JAM DI SINI (samakan dengan EVENT_DATE di JavaScript) -->
+      <div class="date-row">
+        <div><small>Hari</small><strong>Minggu</strong></div>
+        <div><small>Tanggal</small><strong>06 Desember 2026</strong></div>
+        <div><small>Pukul</small><strong>09.00 WIB</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOKASI ===== -->
+  <section>
+    <h2 class="reveal">Lokasi</h2>
+    <div class="divider reveal"></div>
+    <div class="glass place reveal">
+      <h3>Kolam Siblarak</h3>
+      <p>Jatirejo, Sidowayah, Kec. Polanharjo, Kabupaten Klaten, Jawa Tengah</p>
+      <!-- GANTI LINK GMAPS DI SINI -->
+      <a class="btn" href="https://maps.app.goo.gl/jPmsa99SLpwjskyTA" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        Buka di Google Maps
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== SALAM DAN PESAN ===== -->
+  <section>
+    <h2 class="reveal">Salam dan Pesan</h2>
+    <div class="divider reveal"></div>
+    <div class="glass reveal">
+      <form id="rsvp">
+        <div><label for="nama">Nama</label><input id="nama" required maxlength="40" placeholder="Nama lengkap"></div>
+        <div><label for="pesan">Salam / Pesan</label><textarea id="pesan" required maxlength="300" placeholder="Tulis salam, doa, atau pesan singkat"></textarea></div>
+        <div class="actions"><button class="btn" type="submit" id="sendBtn">Kirim Pesan</button></div>
+      </form>
+      <div id="wishes"><p>Memuat pesan...</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Merupakan kehormatan bagi kami atas kehadiran dan doa restu Anda.</p>
+  <h3>Keluarga Besar Bani Mardjuki</h3>
+  <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+</footer>
+
+<button id="music" type="button" aria-label="Putar atau jeda musik">♪</button>
+
+<script>
+/* ===== PENGATURAN UTAMA ===== */
+// GANTI TANGGAL DI SINI (zona WIB +07:00)
+var EVENT_DATE = new Date('2026-12-06T09:00:00+07:00');
+// ISI LINK MP3 UNTUK MUSIK LATAR (kosongkan jika tidak dipakai)
+var MUSIC_URL = '';
+
+var $ = function(id){ return document.getElementById(id); };
+
+/* Nama tamu dari link: undangan.html?to=Nama+Tamu */
+try{
+  var to = new URLSearchParams(location.search).get('to');
+  if(to){ $('guest').textContent = to; $('nama').value = to; }
+}catch(e){}
+
+/* Debu emas */
+(function(){
+  var box = $('dust');
+  for(var i=0;i<18;i++){
+    var s = document.createElement('i');
+    s.style.left = Math.random()*100+'%';
+    s.style.animationDuration = (12+Math.random()*14)+'s';
+    s.style.animationDelay = (-Math.random()*20)+'s';
+    s.style.transform = 'scale('+(0.6+Math.random()*1.2)+')';
+    box.appendChild(s);
+  }
+})();
+
+/* Buka undangan: pintu terbelah + kilau + hero muncul bertahap */
+var audio = null;
+$('openBtn').addEventListener('click', function(e){
+  var r = this.getBoundingClientRect();
+  this.disabled = true;
+  burst(r.left + r.width/2, r.top + r.height/2);
+  $('cover').classList.add('opening');
+  document.body.classList.add('opened');
+  window.scrollTo(0,0);
+  setTimeout(function(){ $('cover').classList.add('gone'); document.body.classList.remove('locked'); checkReveal(); }, 2200);
+  if(MUSIC_URL){
+    try{ audio = new Audio(MUSIC_URL); audio.loop = true; audio.play().catch(function(){}); $('music').style.display = 'block'; }catch(err){}
+  }
+});
+$('music').addEventListener('click', function(){
+  if(!audio) return;
+  if(audio.paused){ audio.play(); this.style.opacity = 1; } else { audio.pause(); this.style.opacity = .5; }
+});
+
+function burst(x, y){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  for(var i=0;i<34;i++){
+    var p = document.createElement('div'); p.className = 'spark';
+    p.style.left = x+'px'; p.style.top = y+'px';
+    document.body.appendChild(p);
+    var a = Math.random()*Math.PI*2, d = 70+Math.random()*190;
+    p.animate([
+      {transform:'translate(0,0) scale(1)',opacity:1},
+      {transform:'translate('+Math.cos(a)*d+'px,'+(Math.sin(a)*d+40)+'px) scale(0)',opacity:0}
+    ],{duration:1100+Math.random()*800,easing:'ease-out'}).onfinish = (function(el){ return function(){ el.remove(); }; })(p);
+  }
+}
+
+/* Hitung mundur */
+function pad(n){ return n < 10 ? '0'+n : ''+n; }
+function tick(){
+  var diff = EVENT_DATE - new Date();
+  if(diff <= 0){
+    ['d','h','m','s'].forEach(function(k){ $(k).textContent = '00'; });
+    $('done').style.display = 'block'; return;
+  }
+  $('d').textContent = pad(Math.floor(diff/86400000));
+  $('h').textContent = pad(Math.floor(diff/3600000)%24);
+  $('m').textContent = pad(Math.floor(diff/60000)%60);
+  $('s').textContent = pad(Math.floor(diff/1000)%60);
+}
+tick(); setInterval(tick, 1000);
+
+/* Scroll reveal */
+var items = document.querySelectorAll('.reveal');
+function checkReveal(){
+  items.forEach(function(el){ if(el.getBoundingClientRect().top < innerHeight - 40) el.classList.add('show'); });
+}
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('show'); io.unobserve(en.target); } });
+  },{threshold:.12});
+  items.forEach(function(el){ io.observe(el); });
+} else { items.forEach(function(el){ el.classList.add('show'); }); }
+</script>
+
+<!-- ===== PESAN BERSAMA (FIREBASE): semua tamu bisa membaca; hanya pengirim yang bisa edit/hapus ===== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, query, orderBy, limit, onSnapshot, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// GANTI DENGAN firebaseConfig DARI PROJECT FIREBASE ANDA
+const firebaseConfig = {
+  apiKey: "AIzaSyAX-_4NCMXPLI-u6-3EHMWPYz5r1ZPotZE",
+  authDomain: "undangan-pertemuan-163fb.firebaseapp.com",
+  projectId: "undangan-pertemuan-163fb",
+  appId: "1:764936096294:web:c190ea9e1e9776d502b4e7"
+};
+
+const $id = (id) => document.getElementById(id);
+const form = $id('rsvp'), inpNama = $id('nama'), inpPesan = $id('pesan'), box = $id('wishes'), sendBtn = $id('sendBtn');
+const actions = form.querySelector('.actions');
+
+if (!firebaseConfig.apiKey || firebaseConfig.apiKey === "ISI_DI_SINI") {
+  box.innerHTML = '<p>Pesan akan tampil di sini setelah Firebase disiapkan.</p>';
+  form.addEventListener('submit', (e) => { e.preventDefault(); alert('Firebase belum disiapkan. Isi firebaseConfig terlebih dahulu.'); });
+} else {
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const col = collection(db, 'wishes');
+
+  const cancelBtn = document.createElement('button');
+  cancelBtn.type = 'button'; cancelBtn.className = 'btn'; cancelBtn.textContent = 'Batal'; cancelBtn.style.display = 'none';
+  actions.appendChild(cancelBtn);
+
+  let myUid = null, editingId = null, items = [];
+
+  const startEdit = (w) => {
+    editingId = w.id; inpNama.value = w.n; inpPesan.value = w.m;
+    sendBtn.textContent = 'Simpan Perubahan'; cancelBtn.style.display = '';
+    form.scrollIntoView({behavior:'smooth', block:'center'}); inpPesan.focus();
+  };
+  const stopEdit = () => {
+    editingId = null; inpPesan.value = '';
+    sendBtn.textContent = 'Kirim Pesan'; cancelBtn.style.display = 'none';
+  };
+  cancelBtn.addEventListener('click', stopEdit);
+
+  const render = () => {
+    box.innerHTML = '';
+    if (!items.length) { const e = document.createElement('p'); e.textContent = 'Belum ada pesan. Jadilah yang pertama menulis.'; box.appendChild(e); return; }
+    items.forEach((w) => {
+      const own = myUid && w.uid === myUid;
+      const d = document.createElement('div'); d.className = 'wish' + (own ? ' mine' : '');
+      const s = document.createElement('strong'); s.textContent = w.n;
+      const p = document.createElement('p'); p.textContent = w.m;
+      d.append(s, p);
+      if (own) {
+        const row = document.createElement('div'); row.className = 'wish-actions';
+        const eb = document.createElement('button'); eb.type = 'button'; eb.className = 'mini'; eb.textContent = 'Edit';
+        eb.addEventListener('click', () => startEdit(w));
+        const db2 = document.createElement('button'); db2.type = 'button'; db2.className = 'mini del'; db2.textContent = 'Hapus';
+        db2.addEventListener('click', async () => {
+          if (!confirm('Hapus pesan ini?')) return;
+          try { await deleteDoc(doc(db, 'wishes', w.id)); if (editingId === w.id) stopEdit(); }
+          catch (err) { alert('Gagal menghapus. Coba lagi.'); }
+        });
+        row.append(eb, db2); d.appendChild(row);
+      }
+      box.appendChild(d);
+    });
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!myUid) { alert('Sedang menyambungkan, coba lagi sebentar.'); return; }
+    const n = inpNama.value.trim(), m = inpPesan.value.trim();
+    if (!n || !m) return;
+    sendBtn.disabled = true;
+    try {
+      if (editingId) { await updateDoc(doc(db, 'wishes', editingId), { n, m }); stopEdit(); }
+      else { await addDoc(col, { n, m, uid: myUid, createdAt: serverTimestamp() }); inpPesan.value = ''; }
+    } catch (err) { console.error(err); alert('Gagal mengirim. Periksa koneksi internet Anda.'); }
+    sendBtn.disabled = false;
+  });
+
+  signInAnonymously(auth).catch((err) => console.error(err));
+  onAuthStateChanged(auth, (u) => { myUid = u ? u.uid : null; render(); });
+  onSnapshot(query(col, orderBy('createdAt', 'desc'), limit(100)),
+    (snap) => { items = snap.docs.map((d) => ({ id: d.id, ...d.data() })); render(); },
+    (err) => { console.error(err); box.innerHTML = '<p>Pesan belum dapat dimuat.</p>'; });
+}
+</script>
+</body>
+</html>
